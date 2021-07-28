@@ -25,20 +25,37 @@ fakeServerRequest('services.com/api/page1')
 
 
 
-const delayedColorChange = (color, delay) => {
-    return new Promise((resolve, reject) => { //returns a new promise object which has methods like then() if resolved else catch() if rejected.
-        setTimeout(() => {
-            document.body.style.backgroundColor = color;
-            resolve();
-        }, delay)
-    })
+// const delayedColorChange = (color, delay) => {
+//     return new Promise((resolve, reject) => { //returns a new promise object which has methods like then() if resolved else catch() if rejected.
+//         setTimeout(() => {
+//             document.body.style.backgroundColor = color;
+//             resolve();
+//         }, delay)
+//     })
 
-}
+// }
 
-delayedColorChange('red', 1000)
-    .then(() => delayedColorChange('green', 1000)) // arrow functions within are returning this constantly.
-    .then(() => delayedColorChange('yellow', 1000))
-    .then(() => delayedColorChange('violet', 1000))
-    .then(() => delayedColorChange('orange', 1000))
+// delayedColorChange('red', 1000)
+//     .then(() => delayedColorChange('green', 1000)) // arrow functions within are returning this constantly.
+//     .then(() => delayedColorChange('yellow', 1000))
+//     .then(() => delayedColorChange('violet', 1000))
+//     .then(() => delayedColorChange('orange', 1000))
+//     .then(() => delayedColorChange('lawngreen', 1000))
 
-    
+
+
+// const hell = async function ne1() {
+//     throw "Oh no!! error" // throw keyword as well stops the execution of function and is returned as the value.
+//     return error
+// }
+
+// hell()
+
+//Error --setTimeout doesn't return a Promise hence then cannot be used.
+// const delayedColorChange = async (color, delay) => {
+//     return setTimeout(() => {
+//         document.body.style.backgroundColor = color;
+//     }, delay)
+// }
+
+// delayedColorChange('lawngreen', 1000)
