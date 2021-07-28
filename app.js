@@ -51,7 +51,7 @@ fakeServerRequest('services.com/api/page1')
 
 // hell()
 
-//Error --setTimeout doesn't return a Promise hence then cannot be used.
+//Error --setTimeout doesn't return a Promise object hence then cannot be used.
 // const delayedColorChange = async (color, delay) => {
 //     return setTimeout(() => {
 //         document.body.style.backgroundColor = color;
