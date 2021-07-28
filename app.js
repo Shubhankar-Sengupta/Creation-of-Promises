@@ -1,3 +1,10 @@
+// new Promise((resolve, reject)=> {
+//     resolve();
+// })
+
+// new Promise((resolve, reject)=> {
+//     reject();
+// })
 
 const fakeServerRequest = (url) => {
     return new Promise((resolve, reject) => { // it returns a Promise object each time the function is executed. It takes a callback which takes two parametrs by default
@@ -33,3 +40,5 @@ delayedColorChange('red', 1000)
     .then(() => delayedColorChange('yellow', 1000))
     .then(() => delayedColorChange('violet', 1000))
     .then(() => delayedColorChange('orange', 1000))
+
+    
