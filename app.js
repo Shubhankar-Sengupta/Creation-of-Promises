@@ -59,3 +59,18 @@ fakeServerRequest('services.com/api/page1')
 // }
 
 // delayedColorChange('lawngreen', 1000)
+
+
+const delayedColorChange = (color, delay) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve();
+            document.body.style.backgroundColor = color;
+        }, delay)
+    })
+}
+
+
+delayedColorChange('red', 1000) // once resolve the then() method callback hence gets executed. then() is a method on the new promise object that is returned everytime when delayedColorChange function is invoked.  
+.then(() => delayedColorChange('green', 1000))
+.then(() => delayedColorChange('orange', 1000))
