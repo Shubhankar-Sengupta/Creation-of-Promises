@@ -61,16 +61,52 @@ fakeServerRequest('services.com/api/page1')
 // delayedColorChange('lawngreen', 1000)
 
 
-const delayedColorChange = (color, delay) => {
-    return new Promise((resolve, reject) => {
+// const delayedColorChange = (color, delay) => {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve();
+//             document.body.style.backgroundColor = color;
+//         }, delay)
+//     })
+// }
+
+
+// delayedColorChange('red', 1000) // once resolve the then() method callback hence gets executed. then() is a method on the new promise object that is returned everytime when delayedColorChange function is invoked.  
+// .then(() => delayedColorChange('green', 1000))
+// .then(() => delayedColorChange('orange', 1000))
+
+
+let delay = 0;
+
+const delayedColorChange = function (color) {
+    delay += 1000
+    if (color === '') throw "Not the expected color";
+    return async () => {
         setTimeout(() => {
-            resolve();
             document.body.style.backgroundColor = color;
         }, delay)
-    })
+    }
+
 }
 
 
-delayedColorChange('red', 1000) // once resolve the then() method callback hence gets executed. then() is a method on the new promise object that is returned everytime when delayedColorChange function is invoked.  
-.then(() => delayedColorChange('green', 1000))
-.then(() => delayedColorChange('orange', 1000))
+delayedColorChange('violet')()
+    .then(() => delayedColorChange('green')())
+    .then(() => delayedColorChange('yellow')())
+    .then(() => delayedColorChange('orange')())
+    .then(() => delayedColorChange('lawngreen')())
+    .then(() => delayedColorChange('brown')())
+
+
+// async functions by default return an object with a state of fulfilled when not returned with any value. 
+
+// async function great() {
+//     throw "Oh no error" // now it is rejected with error the magical promise object
+// }
+
+async function great() {
+    return "Hello" // here the promise is fulfilled with the value of Hello which is returned from the async function.
+}
+
+async function god() { // here the status is always resolved within async functions unless you throw an error.
+}
