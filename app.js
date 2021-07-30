@@ -7,7 +7,6 @@
 // })
 
 const fakeServerRequest = (url) => {
-
     return new Promise((resolve, reject) => { // it returns a Promise object each time the function is executed. It takes a callback which takes two parametrs by default
         //first is resolve that if the promise is resolved or // reject-the second one if the promise is rejected.
         // both params expect a callback as well and only one thing can happen at a time.
@@ -16,9 +15,7 @@ const fakeServerRequest = (url) => {
             if (delay > 4000) {
                 reject('Connection Timeout :(')
             }
-
             resolve(`Data for  ${url}`);
-
         }, delay)
     })  //resolve and reject are two functions either of which on any point of time gets executed inside the Promise() callback.
 
@@ -32,21 +29,21 @@ const fakeServerRequest = (url) => {
 
 
 
-async function RequestAPI() { // awaits can only be used insdie async functions.
+// async function RequestAPI() { // awaits can only be used insdie async functions.
 
-    try {
-        let data = await fakeServerRequest('/page1') // we can store it in a variable or just be with await.
-        console.log(data)
-        let data1 = await fakeServerRequest('/page2')
-        console.log(data1)
-        return "Donee!!!"
-    }
+//     try {
+//         let data = await fakeServerRequest('/page1') // we can store it in a variable or just be with await.
+//         console.log(data)
+//         let data1 = await fakeServerRequest('/page2')
+//         console.log(data1)
+//         return "Donee!!!"
+//     }
 
-    catch (err) { console.log('Something went wrong', err) }
+//     catch (err) { console.log('Something went wrong', err) }
 
-}
+// }
 
-RequestAPI()
+// RequestAPI()
 
 // RequestAPI().catch((err) => console.log('Something went wrong', err)); // to catch the error and resolve it.
 
@@ -224,3 +221,36 @@ async function watchTutorial() {
 
 
 watchTutorial()
+
+
+async function Login(username, password) {
+    if (!username || !password) throw 'Missing Credentials';
+    if (password !== 'Londa') throw 'Invalid credentials';
+    else return "Great match Login done! Welcome"
+}
+
+Login("Londa")
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+
+
+
+
+function delayedColorChange(color, delay) {
+    return new Promise((resolve, reject) => { // resolve is a function which when runs returns a resolved promise. // promise is either rejected or resolved. Here it is always resolved. 
+        setTimeout(() => { //resolve is a function with which the Promise is resolved.
+            document.body.style.backgroundColor = color;
+            resolve();
+        }, delay)
+    })
+}
+
+
+
+async function newColor() {
+    await delayedColorChange('red', 1000)  // await stops the function execution and waits till this promise is resolved and then it moves to the next line of code.
+    await delayedColorChange('green', 1000)
+    return "Done"; //this function is resolved with a returned value of 'done'.
+}
+
+newColor()
